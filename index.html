@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golden Rose Daycare | Where Every Child Blossoms</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple-deep:    #3B1F6E;
+      --purple-mid:     #5C3AA0;
+      --purple-light:   #7C57C5;
+      --purple-soft:    #EDE8F8;
+      --gold:           #F5C518;
+      --gold-dark:      #C9961A;
+      --gold-light:     #FFF0A0;
+      --white:          #FFFFFF;
+      --off-white:      #F9F7FF;
+      --text-dark:      #1A0E33;
+      --text-mid:       #4A3570;
+      --text-light:     #8C7DB5;
+      --radius-lg:      16px;
+      --radius-xl:      28px;
+      --shadow-soft:    0 8px 40px rgba(59,31,110,0.12);
+      --shadow-gold:    0 4px 24px rgba(245,197,24,0.3);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(59,31,110,0.97);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      box-shadow: 0 2px 24px rgba(59,31,110,0.3);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 42px; height: 42px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-links {
+      display: flex; align-items: center; gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--purple-deep) !important;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 800 !important;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-hamburger span { width: 26px; height: 2px; background: var(--white); border-radius: 2px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-mid) 55%, #7B4EC8 100%);
+      display: flex; align-items: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='40' cy='40' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-blob {
+      position: absolute; right: -120px; top: -80px;
+      width: 680px; height: 680px;
+      background: radial-gradient(circle, rgba(245,197,24,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-blob2 {
+      position: absolute; left: -100px; bottom: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(124,87,197,0.3) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 640px;
+      animation: fadeUp 0.8s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,197,24,0.15);
+      border: 1px solid rgba(245,197,24,0.4);
+      color: var(--gold);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 1.3rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+      max-width: 520px;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--purple-deep);
+      padding: 15px 32px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: var(--shadow-gold);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(245,197,24,0.5); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.4);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-stats {
+      position: absolute; right: 5%; bottom: 60px; z-index: 2;
+      display: flex; gap: 2rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-lg);
+      padding: 20px 28px;
+      text-align: center;
+    }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      background: var(--gold);
+      padding: 18px 5%;
+      display: flex; align-items: center; justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800;
+      color: var(--purple-deep);
+      font-size: 0.95rem;
+    }
+    .trust-icon { font-size: 1.3rem; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 90px 5%; }
+    .section-tag {
+      display: inline-block;
+      background: var(--purple-soft);
+      color: var(--purple-mid);
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--purple-deep);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-title em { color: var(--purple-light); font-style: italic; }
+    .section-sub {
+      color: var(--text-mid);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .center-text { text-align: center; }
+    .center-text .section-sub { margin: 0 auto; }
+
+    /* ── AGE GROUPS ── */
+    .ages { background: var(--off-white); }
+    .age-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .age-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2rem 1.8rem;
+      box-shadow: var(--shadow-soft);
+      border: 2px solid transparent;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .age-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 5px;
+      background: var(--purple-mid);
+      border-radius: 2px 2px 0 0;
+    }
+    .age-card:nth-child(2)::before { background: var(--gold); }
+    .age-card:nth-child(3)::before { background: var(--purple-light); }
+    .age-card:nth-child(4)::before { background: var(--gold-dark); }
+    .age-card:nth-child(5)::before { background: var(--purple-deep); }
+    .age-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--purple-soft);
+      box-shadow: 0 16px 48px rgba(59,31,110,0.16);
+    }
+    .age-emoji { font-size: 2.8rem; margin-bottom: 1rem; }
+    .age-range {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--purple-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .age-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--purple-deep);
+      margin-bottom: 0.6rem;
+    }
+    .age-card p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+    .age-card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 1.2rem;
+      color: var(--purple-mid);
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .age-card-link:hover { gap: 10px; color: var(--gold-dark); }
+
+    /* ── WHY US ── */
+    .why {
+      background: var(--white);
+    }
+    .why-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+    .why-visual {
+      position: relative;
+    }
+    .why-img-wrap {
+      background: linear-gradient(135deg, var(--purple-deep), var(--purple-mid));
+      border-radius: var(--radius-xl);
+      height: 480px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-img-emoji {
+      font-size: 9rem;
+      opacity: 0.3;
+    }
+    .why-float-card {
+      position: absolute;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-soft);
+      display: flex; align-items: center; gap: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--purple-deep);
+    }
+    .why-float-card.top { top: -20px; right: -20px; }
+    .why-float-card.bottom { bottom: -20px; left: -20px; }
+    .why-float-icon {
+      width: 40px; height: 40px;
+      background: var(--gold-light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .why-features {
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .why-feature {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+    }
+    .why-feature-icon {
+      width: 52px; height: 52px; flex-shrink: 0;
+      background: var(--purple-soft);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      transition: background 0.2s;
+    }
+    .why-feature:hover .why-feature-icon {
+      background: var(--gold-light);
+    }
+    .why-feature h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--purple-deep);
+      margin-bottom: 0.3rem;
+    }
+    .why-feature p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* ── CURRICULUM ── */
+    .curriculum { background: var(--purple-deep); }
+    .curriculum .section-tag { background: rgba(245,197,24,0.15); color: var(--gold); }
+    .curriculum .section-title { color: var(--white); }
+    .curriculum .section-title em { color: var(--gold); }
+    .curriculum .section-sub { color: rgba(255,255,255,0.75); }
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .curriculum-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-xl);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .curriculum-card:hover {
+      background: rgba(245,197,24,0.12);
+      transform: translateY(-5px);
+      border-color: rgba(245,197,24,0.3);
+    }
+    .curriculum-card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .curriculum-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .curriculum-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--off-white); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .testi-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+    .testi-quote {
+      font-size: 3rem;
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      line-height: 0.5;
+      margin-bottom: 1rem;
+    }
+    .testi-card p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .testi-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .testi-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-mid), var(--purple-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      color: var(--white);
+    }
+    .testi-name {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--purple-deep);
+    }
+    .testi-role {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+    .testi-stars {
+      position: absolute; top: 2rem; right: 2rem;
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+
+    /* ── SAFETY SECTION ── */
+    .safety {
+      background: var(--white);
+    }
+    .safety-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+    .safety-list {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .safety-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--off-white);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      font-weight: 700;
+      color: var(--purple-deep);
+    }
+    .safety-check {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: var(--purple-mid);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+    .safety-visual {
+      background: linear-gradient(145deg, var(--gold-light), var(--gold));
+      border-radius: var(--radius-xl);
+      height: 420px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .safety-visual-emoji { font-size: 8rem; opacity: 0.35; }
+    .safety-badge-wrap {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1rem;
+    }
+    .safety-badge {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 14px 24px;
+      display: flex; align-items: center; gap: 12px;
+      box-shadow: var(--shadow-soft);
+      font-weight: 800;
+      color: var(--purple-deep);
+      font-size: 1rem;
+    }
+
+    /* ── ENROLLMENT STEPS ── */
+    .enroll { background: var(--purple-soft); }
+    .steps-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+    .step-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+    .step-num {
+      width: 64px; height: 64px;
+      background: var(--purple-deep);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 4px 20px rgba(59,31,110,0.25);
+    }
+    .step-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--purple-deep);
+      margin-bottom: 0.5rem;
+    }
+    .step-card p {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      padding: 80px 5%;
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      color: var(--purple-deep);
+      margin-bottom: 1rem;
+    }
+    .cta-band p {
+      font-size: 1.1rem;
+      color: rgba(59,31,110,0.8);
+      margin-bottom: 2rem;
+    }
+    .cta-band .btn-dark {
+      background: var(--purple-deep);
+      color: var(--white);
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .cta-band .btn-dark:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(59,31,110,0.35); }
+
+    /* ── GALLERY ── */
+    .gallery { background: var(--purple-deep); padding-bottom: 100px; }
+    .gallery .section-tag { background: rgba(245,197,24,0.15); color: var(--gold); }
+    .gallery .section-title { color: var(--white); }
+    .gallery .section-sub { color: rgba(255,255,255,0.7); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 220px 220px;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .gallery-item {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, var(--purple-mid), var(--purple-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover { transform: scale(1.02); }
+    .gallery-item:first-child { grid-row: span 2; font-size: 6rem; background: linear-gradient(135deg, var(--purple-deep), var(--purple-mid)); }
+    .gallery-item:nth-child(4) { background: linear-gradient(135deg, rgba(245,197,24,0.2), rgba(245,197,24,0.05)); }
+    .gallery-item::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(59,31,110,0.2);
+    }
+    .gallery-label {
+      position: absolute; bottom: 12px; left: 12px; z-index: 2;
+      background: rgba(59,31,110,0.7);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+    }
+
+    /* ── TUITION ── */
+    .tuition { background: var(--white); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .pricing-card {
+      border: 2px solid var(--purple-soft);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .pricing-card.featured {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-gold);
+    }
+    .pricing-card:hover {
+      border-color: var(--purple-light);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft);
+    }
+    .pricing-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--purple-deep);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .pricing-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .pricing-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--purple-deep);
+      margin-bottom: 0.5rem;
+    }
+    .pricing-age { font-size: 0.82rem; color: var(--text-light); font-weight: 600; margin-bottom: 1.5rem; }
+    .pricing-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--purple-mid);
+      margin-bottom: 1.5rem;
+    }
+    .pricing-price span { font-size: 1rem; color: var(--text-light); }
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    .pricing-features li {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      padding: 5px 0;
+      font-weight: 600;
+    }
+    .pricing-features li::before {
+      content: '✓';
+      width: 20px; height: 20px; flex-shrink: 0;
+      background: var(--purple-soft);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem;
+      color: var(--purple-mid);
+      font-weight: 900;
+    }
+
+    /* ── FAQ ── */
+    .faq { background: var(--off-white); }
+    .faq-list {
+      max-width: 780px; margin: 3rem auto 0;
+    }
+    .faq-item {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 12px rgba(59,31,110,0.06);
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 1.3rem 1.8rem;
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--purple-deep);
+      font-size: 0.98rem;
+      gap: 1rem;
+      user-select: none;
+    }
+    .faq-q:hover { color: var(--purple-light); }
+    .faq-arrow {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+      color: var(--gold-dark);
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s;
+      padding: 0 1.8rem;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 1.8rem 1.3rem; }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--white); }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-top: 4rem;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-detail {
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .contact-icon-wrap {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: var(--purple-soft);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .contact-detail h5 {
+      font-weight: 800; font-size: 0.9rem;
+      color: var(--purple-deep);
+      margin-bottom: 2px;
+    }
+    .contact-detail p {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+    .contact-form {
+      background: var(--off-white);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1rem; }
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--purple-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--white);
+      border: 2px solid var(--purple-soft);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--purple-mid); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%;
+      background: var(--purple-deep);
+      color: var(--white);
+      padding: 15px;
+      border: none; border-radius: 10px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .form-submit:hover { background: var(--purple-mid); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text-dark);
+      color: rgba(255,255,255,0.7);
+      padding: 60px 5% 30px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-brand p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .footer-social {
+      display: flex; gap: 0.7rem;
+    }
+    .social-btn {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .social-btn:hover { background: var(--gold); }
+    .footer-col h5 {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.82rem;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--gold); }
+    .accreditation {
+      display: flex; gap: 1rem; align-items: center;
+    }
+    .accred-badge {
+      background: rgba(245,197,24,0.15);
+      border: 1px solid rgba(245,197,24,0.3);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .why-layout, .safety-layout, .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .why-visual, .safety-visual { height: 280px; }
+      .hero-stats { position: static; margin-top: 2.5rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-item:first-child { grid-row: span 1; }
+    }
+    @media (max-width: 620px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero-stats { flex-direction: column; gap: 1rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── SCROLL TOP BUTTON ── */
+    #scrollTop {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+      width: 48px; height: 48px;
+      background: var(--purple-deep);
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--gold);
+      box-shadow: var(--shadow-soft);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    #scrollTop.visible { opacity: 1; pointer-events: all; }
+    #scrollTop:hover { transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">🌱</div>
+      <div class="nav-logo-text">Bright<span>sprout</span><br><small style="font-size:0.55em;font-family:'Nunito',sans-serif;font-weight:600;color:rgba(255,255,255,0.6)">Learning Center</small></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#ages">Programs</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#curriculum">Curriculum</a></li>
+      <li><a href="#tuition">Tuition</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="nav-cta">Enroll Now</a></li>
+    </ul>
+    <div class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-blob"></div>
+    <div class="hero-blob2"></div>
+    <div class="hero-content">
+      <div class="hero-badge">⭐ #1 Rated Childcare in the Region</div>
+      <h1>Where Every Child <em>Blossoms</em> &amp; Belongs</h1>
+      <p>Award-winning early education programs for infants through school age. Safe, nurturing, and joyful — because the first years are the most important years.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Schedule a Tour →</a>
+        <a href="#ages" class="btn-outline">▶ Our Programs</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">15+</div>
+        <div class="hero-stat-label">Years Serving<br>Families</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">98%</div>
+        <div class="hero-stat-label">Parent<br>Satisfaction</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">1:4</div>
+        <div class="hero-stat-label">Infant Teacher<br>Ratio</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-item"><span class="trust-icon">🏆</span> NAEYC Accredited</div>
+    <div class="trust-item"><span class="trust-icon">🔒</span> Secure Keycard Access</div>
+    <div class="trust-item"><span class="trust-icon">🍎</span> Nutritious Meals Included</div>
+    <div class="trust-item"><span class="trust-icon">📱</span> Real-Time Parent App</div>
+    <div class="trust-item"><span class="trust-icon">👩‍⚕️</span> CPR-Certified Staff</div>
+  </div>
+
+  <!-- AGE GROUPS -->
+  <section class="ages" id="ages">
+    <div class="center-text">
+      <div class="section-tag">Our Programs</div>
+      <h2 class="section-title">Care &amp; Learning for <em>Every Stage</em></h2>
+      <p class="section-sub">From the tiniest infants to kindergarten-ready learners, we have a program designed just for them.</p>
+    </div>
+    <div class="age-grid reveal">
+      <div class="age-card">
+        <div class="age-emoji">👶</div>
+        <div class="age-range">6 Weeks – 12 Months</div>
+        <h3>Infant Care</h3>
+        <p>Gentle, responsive care with individualized routines, tummy time, and sensory play in a warm, nurturing environment.</p>
+        <a href="#contact" class="age-card-link">Learn more →</a>
+      </div>
+      <div class="age-card">
+        <div class="age-emoji">🪆</div>
+        <div class="age-range">12 – 24 Months</div>
+        <h3>Young Toddlers</h3>
+        <p>Curiosity-led exploration, first words, and motor milestones supported by experienced, patient caregivers.</p>
+        <a href="#contact" class="age-card-link">Learn more →</a>
+      </div>
+      <div class="age-card">
+        <div class="age-emoji">🎨</div>
+        <div class="age-range">2 – 3 Years</div>
+        <h3>Toddlers</h3>
+        <p>Creative play, language explosion, and social skill-building in joyful, structured classroom experiences.</p>
+        <a href="#contact" class="age-card-link">Learn more →</a>
+      </div>
+      <div class="age-card">
+        <div class="age-emoji">🔬</div>
+        <div class="age-range">3 – 5 Years</div>
+        <h3>Preschool</h3>
+        <p>Our research-backed curriculum builds early literacy, STEM thinking, and emotional intelligence every single day.</p>
+        <a href="#contact" class="age-card-link">Learn more →</a>
+      </div>
+      <div class="age-card">
+        <div class="age-emoji">🎒</div>
+        <div class="age-range">5 – 12 Years</div>
+        <h3>School-Age</h3>
+        <p>Before &amp; after school care plus full summer programs packed with enrichment, sports, arts, and learning adventures.</p>
+        <a href="#contact" class="age-card-link">Learn more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="why">
+    <div class="why-layout">
+      <div class="why-visual reveal">
+        <div class="why-img-wrap">
+          <div class="why-img-emoji">🌻</div>
+          <div class="why-float-card top">
+            <div class="why-float-icon">⭐</div>
+            <div>
+              <div style="font-size:0.75rem;color:var(--text-light)">Average Rating</div>
+              <div>4.9 / 5.0 Stars</div>
+            </div>
+          </div>
+          <div class="why-float-card bottom">
+            <div class="why-float-icon">📸</div>
+            <div>
+              <div style="font-size:0.75rem;color:var(--text-light)">Daily Updates</div>
+              <div>Photos sent to parents</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-tag">Why Golden Rose</div>
+        <h2 class="section-title">Learning Through <em>Play &amp; Wonder</em></h2>
+        <p class="section-sub" style="margin-bottom:2rem">We believe childhood is precious. Our team brings warmth, expertise, and genuine love for children to every single day.</p>
+        <div class="why-features">
+          <div class="why-feature reveal">
+            <div class="why-feature-icon">👩‍🏫</div>
+            <div>
+              <h4>Highly Qualified Educators</h4>
+              <p>All teachers hold degrees in Early Childhood Education and complete 40+ hours of ongoing training annually.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal">
+            <div class="why-feature-icon">📐</div>
+            <div>
+              <h4>Research-Based Curriculum</h4>
+              <p>Our proprietary Learning Roots curriculum is built on developmental science and aligned with early learning standards.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal">
+            <div class="why-feature-icon">🌿</div>
+            <div>
+              <h4>Enriching Outdoor Spaces</h4>
+              <p>Nature-inspired playgrounds, garden beds, and daily outdoor time foster physical health and environmental curiosity.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal">
+            <div class="why-feature-icon">🤝</div>
+            <div>
+              <h4>Family Partnership</h4>
+              <p>We consider parents a vital part of our community — with open-door policies, monthly events, and real-time updates.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="curriculum" id="curriculum">
+    <div class="center-text">
+      <div class="section-tag">What We Teach</div>
+      <h2 class="section-title">A Whole-Child <em>Curriculum</em></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.75)">Every area of development, woven together into joyful daily learning.</p>
+    </div>
+    <div class="curriculum-grid reveal">
+      <div class="curriculum-card">
+        <div class="curriculum-card-icon">📖</div>
+        <h4>Early Literacy</h4>
+        <p>Phonics, storytelling, and a love of reading built from the very first day.</p>
+      </div>
+      <div class="curriculum-card">
+        <div class="curriculum-card-icon">🔢</div>
+        <h4>Math &amp; STEM</h4>
+        <p>Hands-on experiments, counting, patterns, and early problem-solving skills.</p>
+      </div>
+      <div class="curriculum-card">
+        <div class="curriculum-card-icon">🎭</div>
+        <h4>Arts &amp; Music</h4>
+        <p>Creative expression through painting, drama, movement, and instruments.</p>
+      </div>
+      <div class="curriculum-card">
+        <div class="curriculum-card-icon">💛</div>
+        <h4>Social-Emotional</h4>
+        <p>Empathy, self-regulation, friendship skills, and emotional vocabulary.</p>
+      </div>
+      <div class="curriculum-card">
+        <div class="curriculum-card-icon">🌍</div>
+        <h4>Cultural Awareness</h4>
+        <p>Celebrating diversity, world cultures, and languages from the earliest age.</p>
+      </div>
+      <div class="curriculum-card">
+        <div class="curriculum-card-icon">🏃</div>
+        <h4>Physical Education</h4>
+        <p>Daily movement, gross &amp; fine motor development, yoga, and outdoor play.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="center-text">
+      <div class="section-tag">Family Stories</div>
+      <h2 class="section-title">Loved by <em>Thousands</em> of Families</h2>
+      <p class="section-sub">Don't take our word for it — hear from the families who call Golden Rose home.</p>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>My daughter absolutely lights up when we pull into the parking lot every morning. The teachers know her by name, know her quirks, and truly care. I've never felt so at peace leaving her.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">😊</div>
+          <div>
+            <div class="testi-name">Sarah M.</div>
+            <div class="testi-role">Mom of a 3-year-old · Member since 2022</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>Our son started as a shy infant and is now a confident, curious 4-year-old who can already write his name. The progress reports and app photos make us feel connected every day.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👨‍👩‍👦</div>
+          <div>
+            <div class="testi-name">James &amp; Priya K.</div>
+            <div class="testi-role">Parents of two · Member since 2020</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>Switching from our previous center was the best decision we ever made. The facilities are immaculate, the outdoor space is incredible, and the staff turnover is basically zero. Rare find.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">🌸</div>
+          <div>
+            <div class="testi-name">Michelle T.</div>
+            <div class="testi-role">Mom of three · Member since 2019</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section class="safety">
+    <div class="safety-layout">
+      <div>
+        <div class="section-tag">Safety First</div>
+        <h2 class="section-title">Your Child's Safety is Our <em>Priority</em></h2>
+        <p class="section-sub" style="margin-bottom:2rem">We've invested heavily in creating an environment where children thrive and parents have total peace of mind.</p>
+        <div class="safety-list reveal">
+          <div class="safety-item"><div class="safety-check">✓</div> Keycard-secured entry — no unauthorized access</div>
+          <div class="safety-item"><div class="safety-check">✓</div> 24/7 HD security cameras throughout</div>
+          <div class="safety-item"><div class="safety-check">✓</div> All staff background-checked &amp; fingerprinted</div>
+          <div class="safety-item"><div class="safety-check">✓</div> CPR &amp; first-aid certified on every shift</div>
+          <div class="safety-item"><div class="safety-check">✓</div> Allergen-aware, nut-free certified kitchen</div>
+          <div class="safety-item"><div class="safety-check">✓</div> Monthly emergency drills &amp; safety audits</div>
+          <div class="safety-item"><div class="safety-check">✓</div> Licensed &amp; inspected by the State annually</div>
+        </div>
+      </div>
+      <div class="safety-visual reveal">
+        <div class="safety-visual-emoji">🛡️</div>
+        <div class="safety-badge-wrap">
+          <div class="safety-badge">🏅 State Licensed &amp; Inspected</div>
+          <div class="safety-badge">✅ NAEYC Accredited Center</div>
+          <div class="safety-badge">🔒 Secure Entry Technology</div>
+          <div class="safety-badge">🍎 Allergen-Free Kitchen</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery">
+    <div class="center-text">
+      <div class="section-tag">Life at Golden Rose</div>
+      <h2 class="section-title">A Day Full of <em>Discovery</em></h2>
+      <p class="section-sub">Every corner of our center is designed for learning, laughter, and love.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">🎨<div class="gallery-label">Art Studio</div></div>
+      <div class="gallery-item">📚<div class="gallery-label">Reading Corner</div></div>
+      <div class="gallery-item">🌳<div class="gallery-label">Outdoor Play</div></div>
+      <div class="gallery-item">🍎<div class="gallery-label">Nutrition Kitchen</div></div>
+      <div class="gallery-item">🔬<div class="gallery-label">STEM Lab</div></div>
+    </div>
+  </section>
+
+  <!-- TUITION -->
+  <section class="tuition" id="tuition">
+    <div class="center-text">
+      <div class="section-tag">Tuition &amp; Rates</div>
+      <h2 class="section-title">Transparent, <em>Fair Pricing</em></h2>
+      <p class="section-sub">All plans include meals, snacks, curriculum materials, and access to our parent app.</p>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="pricing-card">
+        <div class="pricing-icon">👶</div>
+        <h3>Infant &amp; Toddler</h3>
+        <div class="pricing-age">6 weeks – 24 months</div>
+        <div class="pricing-price">$1,450<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Full-day program (7am–6pm)</li>
+          <li>Individualized feeding schedule</li>
+          <li>Daily progress photos</li>
+          <li>All meals &amp; snacks included</li>
+          <li>Developmental milestone tracking</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="width:100%;justify-content:center">Inquire Now</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-icon">🎨</div>
+        <h3>Preschool</h3>
+        <div class="pricing-age">3 – 5 years</div>
+        <div class="pricing-price">$1,150<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Full-day program (7am–6pm)</li>
+          <li>Learning Roots™ curriculum</li>
+          <li>STEM, arts &amp; music daily</li>
+          <li>All meals &amp; snacks included</li>
+          <li>Kindergarten readiness prep</li>
+          <li>Monthly family events</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;background:var(--purple-deep)">Inquire Now</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-icon">🎒</div>
+        <h3>School-Age</h3>
+        <div class="pricing-age">5 – 12 years</div>
+        <div class="pricing-price">$680<span>/mo</span></div>
+        <ul class="pricing-features">
+          <li>Before &amp; after school care</li>
+          <li>Homework help guaranteed</li>
+          <li>Enrichment clubs &amp; sports</li>
+          <li>Snacks included</li>
+          <li>Summer full-day program</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="width:100%;justify-content:center">Inquire Now</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;font-size:0.85rem;color:var(--text-light)">Sibling discounts available. Financial assistance programs accepted. Contact us for part-time options.</p>
+  </section>
+
+  <!-- ENROLLMENT STEPS -->
+  <section class="enroll">
+    <div class="center-text">
+      <div class="section-tag">Getting Started</div>
+      <h2 class="section-title">Enrolling is <em>Simple</em></h2>
+      <p class="section-sub">We'll guide you every step of the way — from your first call to your child's first day.</p>
+    </div>
+    <div class="steps-wrap reveal">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h4>Schedule a Tour</h4>
+        <p>Visit us in person to see the classrooms, meet the teachers, and ask all your questions.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h4>Choose a Program</h4>
+        <p>We'll help match your child with the right program for their age and developmental stage.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h4>Complete Enrollment</h4>
+        <p>Fill out our simple online enrollment forms and submit the required documents securely.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <h4>Welcome Day! 🎉</h4>
+        <p>Join us for a personalized transition visit so your child feels comfortable and excited to begin.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2>Ready to Give Your Child the Best Start?</h2>
+    <p>Spots fill quickly — schedule your center tour today and see the Golden Rose difference firsthand.</p>
+    <a href="#contact" class="btn-dark">📅 Book Your Tour Today</a>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="center-text">
+      <div class="section-tag">Questions &amp; Answers</div>
+      <h2 class="section-title">Everything You <em>Need to Know</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What are your hours of operation? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">We are open Monday through Friday, 7:00 AM to 6:00 PM. We are closed on major federal holidays. We do offer limited care during school breaks — please contact us for availability.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is your teacher-to-child ratio? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">We maintain industry-leading ratios: Infants 1:4, Young Toddlers 1:5, Toddlers 1:6, Preschool 1:8, and School-Age 1:12. These ratios allow for individualized attention and ensure every child feels seen and supported.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you provide meals and snacks? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Yes! All full-day programs include a healthy breakfast, a hot lunch, and two nutritious snacks. Our menus are created by a registered nutritionist, nut-free, and accommodate common allergies and dietary restrictions. Weekly menus are shared via the parent app.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do you handle sick children? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">For the health of all children and staff, we ask that sick children stay home until they are fever-free for 24 hours without medication. If a child becomes ill during the day, we will contact parents immediately. Our sick child policy is shared in full during enrollment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is there a waitlist? How do I secure a spot? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Availability varies by program and age group. We recommend contacting us as early as possible — especially for infant care, which fills quickly. A deposit is required to secure your spot on our enrollment roster.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you accept childcare subsidies or financial assistance? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Yes, we accept state childcare assistance programs, Child Care and Development Fund (CCDF) subsidies, and employer-sponsored dependent care FSA benefits. We also offer a 10% sibling discount. Please speak with our enrollment coordinator for details.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I visit my child during the day? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Absolutely. We have an open-door policy for enrolled families. We ask that you check in at the front desk upon arrival. Many parents enjoy joining us for special events, lunches, and classroom celebrations throughout the year.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-tag">Contact Us</div>
+    <h2 class="section-title">Let's Start a <em>Conversation</em></h2>
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <p style="font-size:1rem;color:var(--text-mid);line-height:1.7;max-width:440px">Whether you have questions or you're ready to schedule a tour, our friendly team is here to help. Reach out — we'd love to meet your family.</p>
+        <div class="contact-detail">
+          <div class="contact-icon-wrap">📍</div>
+          <div>
+            <h5>Our Location</h5>
+            <p>1248 Golden Rose Blvd<br>Pittsburgh, PA 15236</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon-wrap">📞</div>
+          <div>
+            <h5>Phone</h5>
+            <p>(412) 555-0178</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon-wrap">✉️</div>
+          <div>
+            <h5>Email</h5>
+            <p>hello@goldenrosedaycare.com</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon-wrap">🕐</div>
+          <div>
+            <h5>Hours</h5>
+            <p>Monday – Friday: 7:00 AM – 6:00 PM<br>Closed on federal holidays</p>
+          </div>
+        </div>
+        <div style="background:var(--purple-soft);border-radius:var(--radius-lg);padding:1.5rem;margin-top:0.5rem">
+          <p style="font-weight:800;color:var(--purple-deep);margin-bottom:0.4rem">📣 Currently Enrolling!</p>
+          <p style="font-size:0.88rem;color:var(--text-mid)">Limited spots available for Infants, Toddlers &amp; Preschool. Contact us today to secure your child's place.</p>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--purple-deep);margin-bottom:1.5rem">Schedule a Tour</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Parent First Name</label>
+            <input type="text" placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label>Parent Last Name</label>
+            <input type="text" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="jane@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="(412) 555-0000" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Child's Age</label>
+            <select>
+              <option value="">Select age group</option>
+              <option>6 weeks – 12 months (Infant)</option>
+              <option>12 – 24 months (Young Toddler)</option>
+              <option>2 – 3 years (Toddler)</option>
+              <option>3 – 5 years (Preschool)</option>
+              <option>5 – 12 years (School-Age)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Start Date</label>
+            <input type="date" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Any Questions or Special Needs?</label>
+          <textarea placeholder="Tell us anything you'd like us to know..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit(this)">🌱 Request My Tour</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.5rem">
+          <div style="width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px">🌱</div>
+          <span style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--white)">Golden Rose<br><small style="font-size:0.55em;font-weight:400;color:rgba(255,255,255,0.5)">Learning Center</small></span>
+        </div>
+        <p>Where every child blossoms. A trusted early education partner for Pittsburgh-area families since 2010.</p>
+        <div class="accreditation" style="margin-bottom:1rem">
+          <span class="accred-badge">NAEYC Accredited</span>
+          <span class="accred-badge">State Licensed</span>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-btn">📘</a>
+          <a href="#" class="social-btn">📸</a>
+          <a href="#" class="social-btn">🐦</a>
+          <a href="#" class="social-btn">▶️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <ul>
+          <li><a href="#ages">Infant Care</a></li>
+          <li><a href="#ages">Young Toddlers</a></li>
+          <li><a href="#ages">Toddlers</a></li>
+          <li><a href="#ages">Preschool</a></li>
+          <li><a href="#ages">School-Age</a></li>
+          <li><a href="#ages">Summer Camp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Families</h5>
+        <ul>
+          <li><a href="#why">Why Golden Rose</a></li>
+          <li><a href="#curriculum">Our Curriculum</a></li>
+          <li><a href="#tuition">Tuition &amp; Rates</a></li>
+          <li><a href="#contact">Schedule a Tour</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#">Parent Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="#">1248 Golden Rose Blvd</a></li>
+          <li><a href="#">Pittsburgh, PA 15236</a></li>
+          <li><a href="tel:4125550178">(412) 555-0178</a></li>
+          <li><a href="mailto:hello@goldenrosedaycare.com">hello@goldenrosedaycare.com</a></li>
+          <li><a href="#">Mon–Fri: 7am – 6pm</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Golden Rose Daycare. All rights reserved.</span>
+      <div style="display:flex;gap:1.5rem">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => observer.observe(r));
+
+    // Stagger children inside reveal parents
+    document.querySelectorAll('.why-features .why-feature, .safety-list .safety-item').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.08}s`;
+    });
+
+    // FAQ toggle
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    }
+
+    // Nav mobile
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      if (links.style.display === 'flex') {
+        links.style.display = '';
+      } else {
+        links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:var(--purple-deep);padding:1.5rem 5%;gap:1.2rem;z-index:999;';
+      }
+    }
+
+    // Scroll top button
+    const scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+
+    // Form submit
+    function handleSubmit(btn) {
+      btn.textContent = '✅ Request Sent! We\'ll be in touch soon.';
+      btn.style.background = 'var(--purple-light)';
+      btn.disabled = true;
+    }
+  </script>
+</body>
+</html>
